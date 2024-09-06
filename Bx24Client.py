@@ -8,8 +8,7 @@ from time import sleep
 from requests import adapters, post, exceptions, Response
 from multidimensional_urlencode import urlencode
 import urllib.parse
-
-DEBUG = True
+from logger import write_log
 
 # Retries for API request
 adapters.DEFAULT_RETRIES = 10
@@ -25,7 +24,8 @@ class Bitrix24(object):
     # Timeout for API request in seconds
     timeout = 60
 
-    log = DEBUG
+    log = True
+    log_mode = "verbose"
     
     def __init__(
         self, domain, auth_token, refresh_token="", client_id="", client_secret="", token_renew_callback=None):
@@ -267,23 +267,29 @@ class Bitrix24(object):
         return z
 
     def _print_result(self, response):
-        if not self.log:
-            return
-        
         try:
-            print("\n\033[96m[Bitrix24]\033[0m")
             if isinstance(response, Response):
                 color = (
                     31
                     if response.status_code in [500, 401, 404]
                     or response.status_code >= 400
-                    else 32\
+                    else 32
                 )
-                print(
-                    f"\033[1;{color}m{response.request.method.upper()} [{response.status_code}]\033[1;37m | \033[3m[{response.url}][body]\033[0m\n\033[1mRESPONSE:\033[0m\n{response.content}\n"
-                )
+
+                if self.log_mode == "log":
+                    write_log("bitrix", f"{response.request.method.upper()} [{response.status_code}] | [{response.url}]\n{response.content}\n")
+                elif self.log_mode == "minimal":
+                    print(f"\n\033[96m[Bitrix24]\033[0m \033[1;{color}m{response.request.method.upper()} [{response.status_code}]\033[1;37m | \033[3m[{response.url}]")
+                elif self.log_mode == "verbose":
+                    print("\n\033[96m[Bitrix24]\033[0m")
+                    print(f"\033[1;{color}m{response.request.method.upper()} [{response.status_code}]\033[1;37m | \033[3m[{response.url}][body]\033[0m\n\033[1mRESPONSE:\033[0m\n{response.content}\n")
             else:
-                print(F"\033[1mRESPONSE:\033[0m\n{response}\n")
+                if self.log_mode == "log":
+                    write_log("bitrix", f"{response.request.method.upper()} [{response.status_code}] | [{response.url}]\n{response.content}\n")
+                    write_log("bitrix", response)
+                else:
+                    print("\n\033[96m[Bitrix24]\033[0m")
+                    print(f"\033[1mRESPONSE:\033[0m\n{response}\n")
         except Exception as e:
             print("\n\033[96m[Bitrix24] not possible to print Response:\033[0m")
             print(str(e))
