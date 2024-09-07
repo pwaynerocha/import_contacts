@@ -1,6 +1,8 @@
+import re
+
 def extrair_dados(conteudo_csv) -> dict:
     return {
-        'origem_do_lead': conteudo_csv.get('Origem do lead'),
+        'origem_do_lead': conteudo_csv.get('\ufeffFonte'),
         'data_r1': conteudo_csv.get('Data R1'),
         'data_r2': conteudo_csv.get('Data R2'),
         'data_r3': conteudo_csv.get('Data R3'),
@@ -31,3 +33,6 @@ def extrair_dados(conteudo_csv) -> dict:
         'duplicate_2': conteudo_csv.get('Duplicate 2'),
         'duplicate_3': conteudo_csv.get('Duplicate 3')
     }
+
+def alfanum(value: any) -> str:
+    return "".join([char for char in re.findall(r"[a-zA-Z0-9]+", str(value).strip())])

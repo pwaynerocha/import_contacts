@@ -8,7 +8,7 @@ def write_log(log_file: str, content: str):
     
     # Formatar a data e hora para o nome do arquivo
     log_filename = log_file+".log"
-    log_time = current_time.strftime("%Y-%m-%d_%H-%M-%S")
+    log_time = current_time.strftime("%Y/%m/%d %H:%M:%S")
     
     # Definir o caminho da pasta de logs
     logs_folder = os.path.join(os.getcwd(), "logs")
@@ -22,6 +22,4 @@ def write_log(log_file: str, content: str):
     
     # Escrever no arquivo (acrescentar no final, se o arquivo já existir)
     with open(log_file_path, 'a') as log_file:
-        log_file.write(f"\n[{log_time}]" + content)
-    
-    print(f"[{log_file}] "+content)
+        log_file.write(f"\n[{log_time}] " + content)

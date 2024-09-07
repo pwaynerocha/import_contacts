@@ -1,2 +1,20 @@
 
 [2024-09-06_21-26-20]
+[2024/09/07 02:56:38] line: 0+1 | contact: created[ID:70911] | deal: created[ID:68053] | error: None
+[2024/09/07 03:07:01] line: 30488+1 | contact: created[ID:70913] | deal: created[ID:68055] | error: None
+[2024/09/07 03:12:38] line: 205+1 | contact: created[ID:70915] | deal: created[ID:68057] | error: None
+[2024/09/07 03:28:40] line: 5821+1 | contact: created[ID:70917] | deal: created[ID:68059] | error: None
+[2024/09/07 03:31:22] line: 5822+1 | contact: not processed | deal: not processed | error: cannot access local variable 'contact_id_mapping' where it is not associated with a value
+[2024/09/07 03:33:16] line: 30392+1 | contact: not processed | deal: not processed | error: cannot access local variable 'contact_id_mapping' where it is not associated with a value
+[2024/09/07 03:42:19] line: 30392+1 | contact: created[ID:70919] | deal: created[ID:68061] | error: None
+[2024/09/07 03:43:49] line: 30392+1 | contact: updated[ID:70919] | deal: created[ID:68063] | error: None
+[2024/09/07 03:45:43] line: 30393+1 | contact: created[ID:70921] | deal: created[ID:68065] | error: None
+[2024/09/07 03:55:00] line: 30394+1 | contact: created[ID:70923] | deal: created[ID:68067] | error: None
+[2024/09/07 03:57:18] line: 23371+1 | contact: created[ID:70925] | deal: created[ID:68069] | error: None
+[2024/09/07 04:06:01] line: 23371+1 | contact: updated[ID:70925] | deal: created[ID:68071] | error: None
+[2024/09/07 04:14:08] line: 23371+1 | contact: updated[ID:70925] | deal: created[ID:68073] | error: None
+[2024/09/07 04:16:55] line: 23371+1 | contact: updated[ID:70925] | deal: created[ID:68075] | error: None
+[2024/09/07 04:19:40] line: 23371+1 | contact: updated[ID:70925] | deal: created[ID:68077] | error: None
+[2024/09/07 04:21:02] line: 23371+1 | contact: updated[ID:70925] | deal: created[ID:68079] | error: None
+[2024/09/07 04:25:41] line: 23371+1 | contact: created[ID:70927] | deal: created[ID:68081] | error: None
+[2024/09/07 04:27:42] line: 23372+1 | contact: created[ID:70929] | deal: created[ID:68083] | error: None

@@ -267,6 +267,9 @@ class Bitrix24(object):
         return z
 
     def _print_result(self, response):
+        if not self.log:
+            return
+        
         try:
             if isinstance(response, Response):
                 color = (
@@ -277,15 +280,15 @@ class Bitrix24(object):
                 )
 
                 if self.log_mode == "log":
-                    write_log("bitrix", f"{response.request.method.upper()} [{response.status_code}] | [{response.url}]\n{response.content}\n")
+                    write_log("bitrix", f"[{response.status_code}] | [{response.url}]\n{response.content}\n")
                 elif self.log_mode == "minimal":
                     print(f"\n\033[96m[Bitrix24]\033[0m \033[1;{color}m{response.request.method.upper()} [{response.status_code}]\033[1;37m | \033[3m[{response.url}]")
                 elif self.log_mode == "verbose":
                     print("\n\033[96m[Bitrix24]\033[0m")
-                    print(f"\033[1;{color}m{response.request.method.upper()} [{response.status_code}]\033[1;37m | \033[3m[{response.url}][body]\033[0m\n\033[1mRESPONSE:\033[0m\n{response.content}\n")
+                    print(f"\033[1;{color}m[{response.status_code}]\033[1;37m | \033[3m[{response.url}][body]\033[0m\n\033[1mRESPONSE:\033[0m\n{response.content}\n")
             else:
                 if self.log_mode == "log":
-                    write_log("bitrix", f"{response.request.method.upper()} [{response.status_code}] | [{response.url}]\n{response.content}\n")
+                    write_log("bitrix", f"[{response.status_code}] | [{response.url}]\n{response.content}\n")
                     write_log("bitrix", response)
                 else:
                     print("\n\033[96m[Bitrix24]\033[0m")

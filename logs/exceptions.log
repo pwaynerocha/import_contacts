@@ -1,0 +1,4 @@
+
+[2024/09/07 02:51:06] name 'save_path' is not defined
+[2024/09/07 03:31:22] cannot access local variable 'contact_id_mapping' where it is not associated with a value
+[2024/09/07 03:33:16] cannot access local variable 'contact_id_mapping' where it is not associated with a value
